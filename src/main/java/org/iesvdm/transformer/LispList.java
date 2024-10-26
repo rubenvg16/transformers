@@ -4,7 +4,7 @@ public class LispList<E>
 {
     private Cell<E> myList;
 
-    private LispList(Cell<E> list)
+    LispList(Object[] list)
     {
         myList=list;
     }

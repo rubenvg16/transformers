@@ -1,7 +1,9 @@
 package org.iesvdm.transformer;
 
 
-public class Joiners
+import java.util.ArrayList;
+
+public class    Joiners
 {
     public static <T> LispList<T> zipLists(Joiner<T> joiner,LispList<T> ls1,LispList<T> ls2)
     {
@@ -13,5 +15,17 @@ public class Joiners
             LispList<T> t = zipLists(joiner,ls1.tail(),ls2.tail());
             return t.cons(h);
         }
+    }
+
+    public static <T> ArrayList<T> zipArrayLists(ArrayList<T> list1, ArrayList<T> list2, Joiner<T> joiner) {
+        ArrayList<T> result = new ArrayList<>();
+        int minSize = Math.min(list1.size(), list2.size());
+
+        for (int i = 0; i < minSize; i++) {
+            T joinedItem = joiner.join(list1.get(i), list2.get(i));
+            result.add(joinedItem);
+        }
+
+        return result;
     }
 }

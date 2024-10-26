@@ -1,6 +1,7 @@
 package org.iesvdm.transformer;
 
 import java.util.ArrayList;
+import java.util.function.Function;
 
 public class Transformers
 {
@@ -10,6 +11,12 @@ public class Transformers
         for(T t : a)
             b.add(tran.transform(t));
         return b;
+    }
+
+    public static <T> void applyDest(ArrayList<T> list, Function<T, T> func) {
+        for (int i = 0; i < list.size(); i++) {
+            list.set(i, func.apply(list.get(i)));
+        }
     }
 }
 
